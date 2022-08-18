@@ -11,8 +11,8 @@ import Util
 ##############################
 
 
-# face_classifier = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
-classifier = load_model('../Model/EmotionDetectionModel.h5')
+face_classifier = cv.CascadeClassifier('pythonProject_copy/haarcascade_frontalface_alt2.xml')
+classifier = load_model('pythonProject_copy/EmotionDetectionModel.h5')
 class_labels = ['Angry', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
 # 开启摄像头
 cap = cv.VideoCapture(0, cv.CAP_DSHOW)
@@ -23,7 +23,7 @@ while True:
     ret, frame = cap.read()
     labels = []
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    # faces = face_classifier.detectMultiScale(gray, 1.3, 5)
+    faces = face_classifier.detectMultiScale(gray, 1.3, 5)
 
     for (x, y, w, h) in faces:
         cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
