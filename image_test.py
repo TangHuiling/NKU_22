@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # emotion_detect_on_image(black_img)
 
     # 传入图片识别情绪
-    image_filename = 'kids.jpg'
+    image_filename = 'images/kids.jpg'
     image = cv.imread(image_filename)
     emotion_detect_on_image(image)
     cv.destroyAllWindows()

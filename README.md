@@ -32,7 +32,7 @@
 + 点击左侧表情图标，选择一张本地图片；
 + 点击右侧表情图标，进行表情识别，跳转到 *识别结果页面*。
 
-![](D:\Erin\Typora\pictures\before.png)
+![](images/index.png)
 
 ###### 识别结果页面
 
@@ -43,15 +43,14 @@
 ###### 人脸检测的旋转处理
 
 + 问题1：使用OpenCV的haar人脸特征分类器和face_recognition模块时，均出现无法检测到有一定倾斜角度的人脸的问题，如下图。
-  <img src="D:\Erin\Typora\pictures\image-20220819155428566.png" alt="image-20220819155428566" style="zoom:50%;" />
+  ![](images/problem1_1.png)
   + 解决方案：每次将图片旋转45度，在新的角度下检测人脸并进行标注
 + 问题2：直接旋转图片可能导致图片边缘被裁剪
   + 解决方案：根据旋转的角度，计算画布所需的宽高，将旋转后图像平移到画布中心，修改旋转矩阵的参数，封装成Util下的`rotate_bound(image, src_h, src_w, angle, i)`方法；
 + 问题3：在相近的角度下，同一个人可能被重复识别并标注
   + 解决方案：将新检测到的人脸与已经标注的人脸进行对比，使用face_recognition下的`face_compare`方法，舍弃过于相似的人脸；
   + 结果：
-    <img src="D:\Erin\Typora\pictures\example.png" style="zoom:50%;" />
-
+  ![](images/problem1_2.png)
 ###### 格式问题
 
 + 问题：在处理数据集分离训练集和测试集的时候，分离后输出数据的时候出现了多行重复数据
