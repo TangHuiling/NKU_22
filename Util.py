@@ -16,8 +16,8 @@ import face_recognition
 #           【功能】按一定角度顺时针旋转图片，并保证图片完整，不被裁剪
 # func 5: draw_allround_faces_on_image(image)
 #           【功能】360度旋转图片，每旋转一定角度识别一次+画一次
-# func 6: classify_pHash(image1, image2)
-#           【功能】 感知哈希算法，描述两张图片的相似度 (效果不佳)
+# func 6: get_most_freq_emo(emo_freq)
+#           【功能】 得到情绪统计中出现次数最多的情绪
 ############################################
 
 
@@ -63,8 +63,6 @@ def get_emotion_from_roi(roi_gray):
 # params: 图片，脸部区域，统计的情绪频率
 # returns: 无
 def draw_faces_on_image(image, faces, emo_freq):
-    if len(faces) == 0:
-        print('Draw No faces!')
     for (top, right, bottom, left) in faces:
         # 用cv画出矩形范围
         cv.rectangle(image, (left, top), (right, bottom), color=(255, 0, 0), thickness=2)
@@ -144,47 +142,13 @@ def draw_allround_faces_on_image(image):
         # cv.waitKey()
     # 最后旋转一次，摆正原图q
     image = rotate_bound(image, IMG_H, IMG_W, ANGLE, TIMES)
+    print('The image is drawn')
     return image, emo_freq
 
 
-# desciption: 感知哈希算法，描述两张图片的相似度 (效果不好)
-# params: 两张图片
-# return: 两张图片的汉明距离
-def classify_pHash(image1, image2):
-    image1 = cv.resize(image1, (32, 32))
-    image2 = cv.resize(image2, (32, 32))
-    gray1 = cv.cvtColor(image1, cv.COLOR_BGR2GRAY)
-    gray2 = cv.cvtColor(image2, cv.COLOR_BGR2GRAY)
-    # 将灰度图转为浮点型，再进行dct变换
-    dct1 = cv.dct(np.float32(gray1))
-    dct2 = cv.dct(np.float32(gray2))
-    # 取左上角的8*8，这些代表图片的最低频率
-    # 这个操作等价于c++中利用opencv实现的掩码操作
-    # 在python中进行掩码操作，可以直接这样取出图像矩阵的某一部分
-    dct1_roi = dct1[0:8, 0:8]
-    dct2_roi = dct2[0:8, 0:8]
-    hash1 = getHash(dct1_roi)
-    hash2 = getHash(dct2_roi)
-    return Hamming_distance(hash1, hash2)
-
-
-# 输入灰度图，返回hash
-def getHash(image):
-    average = np.mean(image)
-    hash = []
-    for i in range(image.shape[0]):
-        for j in range(image.shape[1]):
-            if image[i, j] > average:
-                hash.append(1)
-            else:
-                hash.append(0)
-    return hash
-
-
-# 计算汉明距离
-def Hamming_distance(hash1, hash2):
-    num = 0
-    for index in range(len(hash1)):
-        if hash1[index] != hash2[index]:
-            num += 1
-    return num
+# description: 得到情绪统计中出现次数最多的情绪
+# params: 情绪-出现次数 dict
+# return: 出现次数最高的情绪的文本
+def get_most_freq_emo(emo_freq):
+    find_max = max(emo_freq, key=emo_freq.get)
+    return find_max

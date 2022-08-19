@@ -1,9 +1,7 @@
 import cv2 as cv
 import numpy as np
-import face_recognition
 from keras.models import load_model
 
-import Util
 
 ##############################
 # 由于摄像头实时测试时调用Util包会出现卡顿、掉帧的情况
