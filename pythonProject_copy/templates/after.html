@@ -4,11 +4,37 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<img src="{{url_for('static',filename='after.jpg')}}" alt="image"  width="150" height="150" style="margin-left: 370px;margin-top: 300px"/>
-<if condition="{{data}}=='Anger'">
-    <p>Why are you so mad?</p>
-</if>
-{{data}}
+<body style="background-color:#FF9500;">
+<p id="comm" style="position: absolute;top:130px;left:80px;font-style: italic;font-size: 25px; font-family: 'Noto Serif SC', serif;">testt</p>
+
+<img src="{{url_for('static',filename='file.jpg')}}" alt="image"  width="150" height="150" style="position:absolute;left: 400px;top: 150px"/>
+<img id="imgC" src="../static/party.png" style="position: absolute;left: 500px;top:250px;"/>
+<script>
+    if("{{data}}"=="Anger"){
+        document.getElementById("comm").innerHTML = "有人看上去可不怎么开心...";
+        document.getElementById("imgC").src="../static/anger.png";
+    }
+    else if("{{data}}"=="Neutral"){
+        document.getElementById("comm").innerHTML = "这是在想什么？";
+        document.getElementById("imgC").src="../static/neutral.png";
+    }
+     else if("{{data}}"=="Fear"){
+        document.getElementById("comm").innerHTML = "什么东西这么可怕？";
+        document.getElementById("imgC").src="../static/fear.png";
+    }
+      else if("{{data}}"=="Happy"){
+        document.getElementById("comm").innerHTML = "好心情！";
+        document.getElementById("imgC").src="../static/happy.png";
+    }
+       else if("{{data}}"=="Sad"){
+        document.getElementById("comm").innerHTML = "不要悲伤。";
+        document.getElementById("imgC").src="../static/sad.png";
+    }
+       else if("{{data}}"=="Surprise"){
+        document.getElementById("comm").innerHTML = "惊喜！";
+        document.getElementById("imgC").src="../static/surprise.png";
+    }
+// document.getElementById("emo").innerHTML = "{{data}}";
+</script>
 </body>
 </html>

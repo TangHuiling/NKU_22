@@ -27,6 +27,7 @@ def emotion_detect_on_image(src_image):
     cv.waitKey()
     # 输出6中情绪出现的频率
     print(emo_freq)
+    print(Util.get_most_freq_emo(emo_freq))
 
 
 if __name__ == '__main__':
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     # emotion_detect_on_image(black_img)
 
     # 传入图片识别情绪
-    image_filename = 'kids.jpg'
+    image_filename = 'images/kids.jpg'
     image = cv.imread(image_filename)
     emotion_detect_on_image(image)
     cv.destroyAllWindows()

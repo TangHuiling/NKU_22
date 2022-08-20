@@ -6,32 +6,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-  function createParagraph() {
-    let para = document.createElement('p');
-    para.textContent = '你点击了这个按钮！';
-    document.body.appendChild(para);
-  }
-
-  const buttons = document.querySelectorAll('button');
-
-  for(let i = 0; i < buttons.length ; i++) {
-    buttons[i].addEventListener('click', createParagraph);
-  }
-});
-
-    </script>
 </head>
 <body style="background-color:#FF9500;">
-<p style="position: absolute;top:100px;left:80px;font-style: italic;font-size: 25px; font-family: 'Noto Serif SC', serif;">选择一张图片-></p>
+<p style="position: absolute;top:130px;left:80px;font-style: italic;font-size: 25px; font-family: 'Noto Serif SC', serif;">点击选择一张图片-></p>
 <form action="{{url_for('after')}}" method="POST" enctype="multipart/form-data">
     <input type="file" id="file-input" name="file1" hidden>
     <label for="file-input" name="file1">
-        <img src="../static/party.png" alt="file" width="300" height="300" style="margin-left: 200px;">
+        <img src="../static/party.png" alt="file" width="300" height="300" style="margin-left: 250px;">
     </label>
-    <input type="image" src="../static/affection.png" alt="submit" width="150" height="150" style="margin-left: 370px;margin-top: 300px">
+    <input type="image" src="../static/affection.png" alt="submit" width="150" height="150" style="margin-left: 100px;margin-top: 300px">
 </form>
-
+<p style="position: absolute;top:380px;left:800px;font-style: italic;font-size: 25px; font-family: 'Noto Serif SC', serif;"><-然后点此试试看</p>
 </body>
 </html>
