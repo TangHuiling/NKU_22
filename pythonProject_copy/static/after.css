@@ -1,0 +1,19 @@
+.box {
+    width: 25%;
+    height: 25%;
+    margin-top: 10%;
+    object-fit: cover;
+}
+#imageC{
+    margin-top: 10%;
+    margin-left: 60%;
+}
+#comm{
+    margin-top:2%;
+    margin-left: 2%;
+    font-size: 2rem;
+    color: #ffffff;
+    border: #FFFFFF;
+    text-align: center;
+    font-style: italic;
+}

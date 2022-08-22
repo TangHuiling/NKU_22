@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/after.css"/>
+    <title>result</title>
 </head>
 <body style="background-color:#FF9500;">
-<p id="comm" style="position: absolute;top:130px;left:80px;font-style: italic;font-size: 25px; font-family: 'Noto Serif SC', serif;">testt</p>
+<!--分类统计情绪-->
+<canvas id="canv" width="400" height="400"></canvas>
 
-<img src="{{url_for('static',filename='file.jpg')}}" alt="image"  width="150" height="150" style="position:absolute;left: 400px;top: 150px"/>
-<img id="imgC" src="../static/party.png" style="position: absolute;left: 500px;top:250px;"/>
+<p id="comm" style="position: absolute;left: 3%;top:10%;">most freq:{{ data }}</p>
+
+<div class="box">
+    <img src="{{url_for('static',filename='img_final.jpg')}}" alt="image_final" style="position: absolute;left:30%;top:30%"/>
+</div>
+
+<img id="imgC" src="../static/happy.png" style="position: absolute;left: 60%;top:80%;"/>
 <script>
-    if("{{data}}"=="Anger"){
+     if("{{data}}"=="Angry"){
         document.getElementById("comm").innerHTML = "有人看上去可不怎么开心...";
         document.getElementById("imgC").src="../static/anger.png";
     }
@@ -34,7 +42,6 @@
         document.getElementById("comm").innerHTML = "惊喜！";
         document.getElementById("imgC").src="../static/surprise.png";
     }
-// document.getElementById("emo").innerHTML = "{{data}}";
 </script>
 </body>
 </html>

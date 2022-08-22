@@ -1,0 +1,140 @@
+body{
+	width:100%;
+	height:auto;
+	background-color: #f5c23e;
+	background-image:radial-gradient(80% 80%, #f5823f, #f5c23e);
+	background-image:linear-gradient(to bottom, #f5823f, #f5c23e 60%, #f56a06);
+}
+	
+
+/* 第一部分 导航页*/
+.cl{
+	/*background-color:#f5c23e;*/
+	/*background-image:radial-gradient(250% 200%, #f5823f, #f5c23e);*/
+
+	width:100%;
+	/*column-width: 10em;column-count: 3;*/
+	font-size: 1rem;
+	padding:0;
+	height:8%;
+	margin-left:23%;
+/* 	margin:0; top:5%;*/
+}
+
+.contain i{
+
+	padding: 0 2% 0 0;
+	/* border: 3px solid red; */
+} 
+
+.contain li{		
+	    display: inline;	
+		padding:0 5%;
+		top:20%;
+		/* border: 3px solid red; */
+		
+}
+.contain ul{
+/*     float:right; */
+	 width:auto;
+/* 	 height:35px; */
+	 margin:auto;
+	 padding:2% 0 2% 0;
+}
+.contain a{
+	    color: white;
+		font-size: 2rem;
+		font-weight: 600;
+		text-decoration: none;
+}
+.contain a:hover{
+	color: deepskyblue;
+}
+.clearfix{
+	clear: both;
+}
+
+.describe{
+	/* height: 200px; */
+	display: flex;
+	margin-bottom: -5%;
+	width: 100%;
+	/* border: 3px solid red; */
+}
+.d1{
+	display: flex;
+	width: 100%;
+}
+h6{
+	display: flex;
+	width: 100%;
+	padding: 0 5% 20% 5%;
+	text-align: center;
+	font-size: 23px;
+	margin-left: 20%;
+	margin-bottom: 20%;
+}
+.imgs{
+	display: flex;
+	/* border: 3px solid red; */
+}
+
+.img1 img{
+	width: 90%;
+	padding: 0 15px 0 40px;
+	height: 200px;
+	/* border: 3px solid blue; */
+	max-width: 50%;
+	max-height: 60%;
+	transition: all 2s; /*过渡时间为0.6秒*/
+}
+
+img:hover{
+	transform: rotate(360deg); /*deg为旋转度数*/
+}
+	
+.picture{
+	height: 450px;
+	/* border: 3px solid red; */
+}	
+
+
+.col11 bt1{
+
+	border: 3px solid #F56A06;
+	font-size: 20px;
+	color: #ffffff;
+	background-color: #5555ff;
+	width: 30%;
+	height: 70px;
+	text-align: center;
+	border-radius: 30px;
+	line-height: 30px;
+	/* border: 3px solid red; */
+	margin-left: 50%;
+}
+.col1 img{
+	width: 300px;
+	height: 300px;
+	/* border: 3px solid red; */
+	margin: 15% 0 -20% 40%;
+
+}	
+
+
+.col2 bt2{
+	font-size: 20px;
+	color: #ffffff;
+	background-color: #5555ff;
+	border: #FFFFFF;
+	width: 25%;
+	height: 70px;
+	text-align: center;
+	border-radius: 30px;
+	line-height: 30px;
+	/* border: 3px solid red; */
+	margin-left: 15%;
+	margin-top: 120%;
+}
+
+
