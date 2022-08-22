@@ -6,9 +6,57 @@
     <link rel="stylesheet" type="text/css" href="../static/video_recognition.css">
 </head>
 <body>
-    <div class="cl">
-     <img src="{{ url_for('video_recognition_cam') }}" width="50%"/>
+     <div class="cl">
+				<div class="contain">
+                    <ul>
+                     <li ><a href={{url_for('index1') }}  target="_blank"><i class="fa fa-home"></i>首页</a></li>
+                        <li><a href={{url_for('pic_recognition') }} ><i class="fa fa-star"></i>图片识别</a></li>
+                        <li><a href={{url_for('video_recognition') }} ><i class="fa fa-moon-o"></i>视频识别</a></li>
+                    </ul>
+                </div>
+     </div>
+    <div class="cll">
+     <img src="{{ url_for('video_recognition_cam') }}" width="50%" style="display:block;margin-left:30%;top:10%;height: 30%;width: 40%"/>
     </div>
-
+    	<div class="describe">
+						<div class="d1">
+							 <h6>Sad</h6>
+						</div>
+						<div class="d1">
+							 <h6>Happy</h6>
+						</div>
+						<div class="d1">
+							<h6>Neutral</h6>
+						</div>
+						<div class="d1">
+							 <h6>Fear</h6>
+						</div>
+						<div class="d1">
+							<h6>Angry</h6>
+						</div>
+						<div class="d1">
+							  <h6>Surprise</h6>
+						</div>
+		</div>
+		<div class="imgs">
+						<div class="img1">
+							 <img src="../static/sad.png" >
+						</div>
+						<div class="img1">
+							 <img src="../static/happy.png">
+						</div>
+						<div class="img1">
+							 <img src="../static/neutral.png">
+						</div>
+						<div class="img1">
+							 <img src="../static/fear.png">
+						</div>
+						<div class="img1">
+							<img src="../static/anger.png">
+						</div>
+						<div class="img1">
+							  <img src="../static/surprise.png">
+						</div>
+		</div>
 </body>
 </html>

@@ -1,12 +1,71 @@
-.box {
-    width: 25%;
-    height: 25%;
-    margin-top: 10%;
-    object-fit: cover;
+body{
+	width:100%;
+	height:auto;
+	background-color: #f5c23e;
+	background-image:radial-gradient(80% 80%, #f5823f, #f5c23e);
+	background-image:linear-gradient(to bottom, #f5823f, #f5c23e 60%, #f56a06);
 }
-#imageC{
+
+
+/* 第一部分 导航页*/
+.cl{
+	/*background-color:#f5c23e;*/
+	/*background-image:radial-gradient(250% 200%, #f5823f, #f5c23e);*/
+
+	width:100%;
+	/*column-width: 10em;column-count: 3;*/
+	font-size: 1rem;
+	padding:0;
+	height:8%;
+	margin-left:23%;
+/* 	margin:0; top:5%;*/
+}
+
+.contain i{
+
+	padding: 0 2% 0 0;
+	/* border: 3px solid red; */
+}
+
+.contain li{
+	    display: inline;
+		padding:0 5%;
+		top:20%;
+		/* border: 3px solid red; */
+
+}
+.contain ul{
+/*     float:right; */
+	 width:auto;
+/* 	 height:35px; */
+	 margin:auto;
+	 padding:2% 0 2% 0;
+}
+.contain a{
+	    color: white;
+		font-size: 2rem;
+		font-weight: 600;
+		text-decoration: none;
+}
+.contain a:hover{
+	color: deepskyblue;
+}
+.clearfix{
+	clear: both;
+}
+/* 第二部分 图片*/
+.box {
+    width: 30%;
+    height: 30%;
     margin-top: 10%;
-    margin-left: 60%;
+    margin-left: 30%;
+}
+
+/*第三部分 图片评论*/
+#imgC{
+    margin-top: -15%;
+    margin-left: 70%;
+
 }
 #comm{
     margin-top:2%;

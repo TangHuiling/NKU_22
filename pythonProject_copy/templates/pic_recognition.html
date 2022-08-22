@@ -12,22 +12,22 @@
 		<div class="cl">
 					<div class="contain">
 						<ul>
-							<li ><a href="index1.html" target="_blank"><i class="fa fa-home"></i>首页</a></li>
-							<li><a href="#"><i class="fa fa-star"></i>图片识别</a></li>
-							<li><a href="#"><i class="fa fa-moon-o"></i>视频识别</a></li>
+							<li ><a href={{url_for('index1') }}  target="_blank"><i class="fa fa-home"></i>首页</a></li>
+							<li><a href={{url_for('pic_recognition') }} ><i class="fa fa-star"></i>图片识别</a></li>
+							<li><a href={{url_for('video_recognition') }} ><i class="fa fa-moon-o"></i>视频识别</a></li>
 						</ul>
 					</div>
 		</div>
 		<div class="picture">
 			<div class="col1">
 				<div class="col11">
-					<button type="button" class="bt1" style="font-size: 1.5rem;color: #ffffff;background-color: #5555ff;border: #FFFFFF;text-align: center;padding: 1% 3%;border-radius: 50%;line-height: 30%;margin-left: 15%;margin-top: 2%">点击上传图片或者视频 --></button>
+					<button type="button" class="bt1" style="font-size: 1.5rem;color: #ffffff;background-color: #5555ff;border: #FFFFFF;text-align: center;padding: 1% 3%;border-radius: 50%;line-height: 30%;margin-left: 10%;margin-top: 5%">点击上传图片或者视频 --></button>
 				</div>
 				<div class="form1" style="position: relative">
 					<form action="{{ url_for('after' )}}" method="POST" enctype="multipart/form-data">
 						<input type="file" id="file-input" name="file1" hidden>
 						<label for="file-input" name="file1">
-							<img src="../static/pic.jpg" alt="file"style="display:block;margin-left:35%;margin-top:5%;width:18%">
+							<img src="../static/pic.jpg" alt="file"style="display:block;margin-left:40%;margin-top:0%;width:18%">
 						</label>
                             <!--<img src="../static/file.jpg" alt="image" width="300" height="300" style="display:block;margin-left:55%;padding-top: 20%">-->
                         <input type="submit" class="bt2" value="----> 查看识别结果!" style="font-size: 1.5rem;color: #ffffff;background-color: #5555ff;border: #FFFFFF;text-align: center;padding: 1% 3%;border-radius: 50%;line-height: 30%;margin-left: 65%;margin-top: 5%">
@@ -36,6 +36,7 @@
 			</div>
 		</div>
 		<div class="clearfix"></div>
+
 		<div class="describe">
 						<div class="d1">
 							 <h6>Sad</h6>
