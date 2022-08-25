@@ -50,7 +50,7 @@
 
 + 画框内会实时显示网络摄像头的内容，并进行人脸表情识别。
 
-![](images/video_recognition.png)
+![](images/video_recogniton.png)
 
 
 #### 问题 & 解决方案
