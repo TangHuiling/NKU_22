@@ -6,13 +6,13 @@ import face_recognition
 
 ############################################
 # 工具类
-# func 1: get_faces_from_srcImage(srcImage)
+# func 1: get_faces_from_image(image)
 #           【功能】给出图片，返回原图中的人脸区域
 # func 2: get_emotion_from_roi(roi_gray)
 #           【功能】将处理好的48*48的灰度面部图交给训练好的情绪分类器处理，得到情绪类别
-# func 3: draw_faces_on_image(srcImage, faces)
+# func 3: draw_faces_on_image(image, faces, emo_freq)
 #           【功能】在原图上框出得到的脸部区域，并标注其情绪种类
-# func 4: rotate_bound(image, angle)
+# func 4: rotate_bound(image, src_h, src_w, angle, i)
 #           【功能】按一定角度顺时针旋转图片，并保证图片完整，不被裁剪
 # func 5: draw_allround_faces_on_image(image)
 #           【功能】360度旋转图片，每旋转一定角度识别一次+画一次
@@ -29,7 +29,7 @@ def get_faces_from_image(image):
     # 将原图转化为灰度图
     # gray_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # # 得到OpenCV人脸识别的分类器
-    # face_classifier = cv.CascadeClassifier('pythonProject_copy/haarcascade_frontalface_default.xml')
+    # face_classifier = cv.CascadeClassifier('pythonProject_copy/haarcascade_frontalface_alt2.xml')
     # # 检测人脸
     # faces = face_classifier.detectMultiScale(image, scaleFactor=1.3, minNeighbors=5)
 
@@ -83,7 +83,7 @@ def draw_faces_on_image(image, faces, emo_freq):
 
 # description: 按一定角度旋转图片，并保证图片完整，不被裁剪
 # params: 图片，需要旋转的角度
-# returns: 旋转后的图片，旋转矩阵
+# returns: 旋转后的图片
 def rotate_bound(image, src_h, src_w, angle, i):
     # 获得图片的高、宽，中心坐标
     actual_h, actual_w = image.shape[:2]
@@ -93,7 +93,7 @@ def rotate_bound(image, src_h, src_w, angle, i):
     else:
         # 得到旋转矩阵（为使其顺时针选择，将角度设置为负），缩放因子=1.0
         rotation_matrix = cv.getRotationMatrix2D(center=(center_x, center_y), angle=-angle, scale=1.0)
-        # 用于计算实际画布大小的旋转矩阵：旋转角度是对于原图而言的
+        # 用于计算实际画布大小的旋转矩阵：旋转角度是对于原图而言的（否则图片尺寸会越来越大）
         fake_matrix = cv.getRotationMatrix2D(center=(center_x, center_y), angle=-angle * i, scale=1.0)
         cos = np.abs(fake_matrix[0, 0])
         sin = np.abs(fake_matrix[0, 1])
@@ -108,7 +108,7 @@ def rotate_bound(image, src_h, src_w, angle, i):
         return rotated_image
 
 
-# description: 360度旋转图片，每30度识别一次+画一次
+# description: 360度旋转图片，每45度识别一次+画一次
 # params: 图片
 # returns: 360度识别人脸并标注情绪的标注图，以及出现情绪频率的dict
 def draw_allround_faces_on_image(image):
