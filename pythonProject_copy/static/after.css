@@ -53,10 +53,11 @@ body{
 .clearfix{
 	clear: both;
 }
+
 /* 第二部分 图片*/
 .box {
-    width: 30%;
-    height: 30%;
+    width: 42%;
+    height: 42%;
     margin-top: 10%;
     margin-left: 30%;
 }
