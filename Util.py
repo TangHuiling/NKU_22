@@ -18,6 +18,8 @@ import face_recognition
 #           【功能】360度旋转图片，每旋转一定角度识别一次+画一次
 # func 6: get_most_freq_emo(emo_freq)
 #           【功能】 得到情绪统计中出现次数最多的情绪
+# func 7: generate_frames(camera)
+#           【功能】前端摄像头实时识别
 ############################################
 
 
@@ -152,3 +154,43 @@ def draw_allround_faces_on_image(image):
 def get_most_freq_emo(emo_freq):
     find_max = max(emo_freq, key=emo_freq.get)
     return find_max
+
+
+# description: 前端摄像头实时识别
+def generate_frames(camera):
+    # 加载人脸识别和情绪识别模型
+    face_classifier = cv.CascadeClassifier('haarcascade_frontalface_alt2.xml')
+    classifier = load_model('EmotionDetectionModel.h5')
+    class_labels = ['Angry', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+    while True:
+        ## read the camera frame
+        success, frame = camera.read()
+        # 识别图片，并标注情绪
+        gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        faces = face_classifier.detectMultiScale(gray, 1.3, 5)
+
+        for (x, y, w, h) in faces:
+            cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+            roi_gray = gray[y:y + h, x:x + w]
+            roi_gray = cv.resize(roi_gray, (48, 48), interpolation=cv.INTER_AREA)
+
+            if np.sum([roi_gray]) != 0:
+                roi = roi_gray.astype('float') / 255.0
+                roi = np.array(roi)
+                roi = np.expand_dims(roi, axis=0)
+
+                preds = classifier.predict(roi)[0]
+                label = class_labels[preds.argmax()]
+                label_position = (x, y)
+                cv.putText(frame, label, label_position, cv.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+            else:
+                cv.putText(frame, 'No Face Found', (20, 20), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+
+        if not success:
+            break
+        else:
+            ret, buffer = cv.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
